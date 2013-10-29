@@ -1,0 +1,47 @@
+<configuration xmlns="http://logging.apache.org/log4php/">
+    
+    <appender name="defaultLogFile" class="LoggerAppenderFile">
+        <layout class="LoggerLayoutSimple" />
+        <param name="file" value="/var/log/demo/main.log" />
+        <param name="append" value="true" />
+    </appender>
+    
+    <appender name="requestLogFile" class="LoggerAppenderFile">
+        <layout class="LoggerLayoutSimple" />
+        <param name="file" value="/var/log/demo/request.log" />
+        <param name="append" value="true" />
+    </appender>
+    
+    <appender name="securityLogFile" class="LoggerAppenderFile">
+        <layout class="LoggerLayoutSimple" />
+        <param name="file" value="/var/log/demo/security.log" />
+        <param name="append" value="true" />
+    </appender>
+    
+    <appender name="errorLogFile" class="LoggerAppenderFile">
+        <layout class="LoggerLayoutSimple" />
+        <param name="file" value="/var/log/demo/error.log" />
+        <param name="append" value="true" />
+    </appender>
+    
+    <logger name="request"> 
+    	<level value="trace"/>
+        <appender_ref ref="requestLogFile" />
+    </logger>
+    
+    <logger name="security"> 
+    	<level value="warn"/>
+        <appender_ref ref="securityLogFile" />
+    </logger>
+    
+    <logger name="main">
+    	<level value="info"/>
+    	<appender_ref ref="defaultLogFile"/>
+    </logger>
+    
+    <root>
+    	<level value="error"/>
+        <appender_ref ref="errorLogFile" />
+    </root>
+    
+</configuration>
